@@ -1,0 +1,27 @@
+<div class="auth-wrapper">
+  <form class="form-signin" [formGroup]="ticketForm" (ngSubmit)="onSubmitticket()">
+      <h3 class="h3 mb-3 font-weight-normal text-center">Add Ticket</h3>
+
+      <!-- Errors -->
+      <div *ngIf="errors?.title" class="alert alert-danger mt-3">
+          {{ errors?.title }}
+      </div>
+      <div *ngIf="errors?.description" class="alert alert-danger mt-3">
+          {{ errors?.description }}
+      </div>
+      <div *ngIf="errors?.error" class="alert alert-danger mt-3">
+          {{ errors?.error }}
+      </div>
+
+      <!-- Login -->
+      <div class="form-group">
+          <label>Title Ticket</label>
+          <input type="text" class="form-control" formControlName="title">
+      </div>
+      <div class="form-group">
+          <label>Description</label>
+          <textarea  class="form-control" formControlName="description"></textarea>
+      </div>
+      <button type="submit" class="btn btn-block btn-primary">Add Ticket</button>
+  </form>
+</div>

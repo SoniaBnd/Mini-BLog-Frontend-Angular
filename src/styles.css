@@ -1,0 +1,11 @@
+/* You can add global styles to this file, and also import other style files */
+.fixed-top {
+    position: relative!important;
+}
+h5
+{
+	color: red;
+}
+.pull-right{
+float : right;
+}

@@ -1,0 +1,22 @@
+<div class="auth-wrapper">
+  <form class="form-signin" [formGroup]="commentForm" (ngSubmit)="onSubmitcomment()">
+      <h3 class="h3 mb-3 font-weight-normal text-center">Add Comment</h3>
+
+      <!-- Errors -->
+      <div *ngIf="errors?.comment" class="alert alert-danger mt-3">
+          {{ errors?.comment }}
+      </div>
+     
+      <div *ngIf="errors?.error" class="alert alert-danger mt-3">
+          {{ errors?.error }}
+      </div>
+
+     
+      <div class="form-group">
+          <label>Your Comment</label>
+          <textarea  class="form-control" formControlName="comment"></textarea>
+      </div>
+      <button type="submit" class="btn btn-block btn-primary">Add Comment</button>
+  </form>
+</div>
+

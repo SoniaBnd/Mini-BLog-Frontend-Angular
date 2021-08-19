@@ -1,0 +1,77 @@
+<h1 *ngIf="isRoute == '/my-tickets'">My Tickets List</h1>
+<h1 *ngIf="isRoute == '/tickets'">List All Tickets</h1>
+<h1 *ngIf="isRoute == '/show-ticket'">My Ticket view</h1>
+
+<table *ngIf="isRoute == '/my-tickets'" class="table" id='tab'>
+	<thead>
+	<tr>
+		<th scope="col">Title</th>
+		<th scope="col">Description</th>
+		<th scope="col">Status</th>
+		<th scope="col">Actions</th>
+	</tr>
+	</thead>
+	<tbody>
+	<tr *ngFor="let tickett of lis">
+		<td>{{ tickett.title }}</td>
+		<td>{{ tickett.status }}</td>
+		<td>{{ tickett.description }}</td>
+		<td> 
+		<button class="btn btn-outline-primary" (click)="deleteTicket( tickett.id )">Delete</button>
+		<button class="btn btn-outline-primary" (click)="showTicket( tickett.id )">Show</button>
+		</td>
+	</tr>
+	<tr><td *ngIf="lis.length <= 0">You have no tickets Yet</td></tr>
+	</tbody>
+</table>					
+
+<table *ngIf="isRoute == '/tickets'" class="table" id='tab'>
+	<thead>
+	<tr>
+		<th scope="col">Title</th>
+		<th scope="col">Description</th>
+		<th scope="col">Actions</th>
+	</tr>
+	</thead>
+	<tbody>
+	<tr *ngFor="let tickett of lis">
+		<td>{{ tickett.title }}</td>
+		<td>{{ tickett.description }}</td>
+		<td> <button class="btn btn-outline-primary" (click)="showTicket( tickett.id )">Show</button></td>
+	</tr>
+	<tr><td *ngIf="lis.length <= 0"> No Published Tickets</td></tr>
+	</tbody>
+</table>
+
+<div class="" *ngIf="isRoute == 'show-ticket'">	
+<h5 class="my-0 mr-md-auto font-weight-normal">Title:</h5> 
+<h6 class="">
+{{ Viewtk.title }}
+</h6>
+<hr>
+<h5 class="my-0 mr-md-auto font-weight-normal">Description:</h5> 
+<h6 class="">{{ Viewtk.description }}</h6>
+<hr>
+<h5 class="my-0 mr-md-auto font-weight-normal">List Comments:</h5> 
+<table  class="table" id='tab'>
+	<thead>
+	<tr>
+		<th scope="col">Comment</th>
+		<th scope="col">Author</th>
+		<th scope="col">Action</th>
+	</tr>
+	</thead>
+	<tbody>
+	<tr *ngFor="let comment of comments">
+		<td>{{ comment.comment }}</td>
+		<td>{{ comment.author_name }}</td>
+		<td><button class="btn btn-outline-primary" *ngIf="UserProf.id==comment.author_id" (click)="deleteComment( comment.id )">Delete Comment</button></td> 
+		
+	</tr>
+	<tr><td *ngIf="comments.length <= 0"> No Approved Comments</td></tr>
+	</tbody>
+</table>
+<div>
+</div>
+<a class="btn btn-outline-primary pull-right" [routerLink]="['/addcomment', Viewtk.id]">Add Comment</a>   
+</div>
